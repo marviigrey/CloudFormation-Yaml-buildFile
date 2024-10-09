@@ -1,0 +1,31 @@
+Parameters:
+  KeyName: 
+    Description: The EC2 key Pair
+    Type: AWS::EC2::KeyPair::KeyName
+  EC2Name:
+    Type: String
+Resources:
+  Ec2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+     SecurityGroups:
+      - !Ref InstanceSecurityGroup
+     ImageId: ami-0e8d228ad90af673b
+     KeyName: !Ref KeyName
+     Tags:
+     - Key: Name 
+       Value: myEc2
+  InstanceSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Enable SSH access
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 0
+          ToPort: 20000
+          CidrIp: 0.0.0.0/0
+
+Outputs:
+  PublicIp:
+    Description: Server public IP
+    Value: !GetAtt EC2Instance.PublicIp
