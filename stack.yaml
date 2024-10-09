@@ -12,7 +12,7 @@ Resources:
      SecurityGroups:
       - !Ref InstanceSecurityGroup
      ImageId: ami-0e8d228ad90af673b
-      InstanceType: t2.micro
+     InstanceType: t2.micro
      KeyName: !Ref KeyName
      Tags:
      - Key: Name 
