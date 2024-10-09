@@ -1,0 +1,1 @@
+This a repo specifically for creating awesome stacks for AWS using the IaC tool called cloud formation. the first file `stack.yaml` deploys a simple EC2 instance with a security group and exposes port 22 for SSH.
