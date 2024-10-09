@@ -3,6 +3,7 @@ Parameters:
     Description: The EC2 key Pair
     Type: AWS::EC2::KeyPair::KeyName
   EC2Name:
+    Description: EC2 name
     Type: String
 Resources:
   Ec2Instance:
@@ -14,7 +15,7 @@ Resources:
      KeyName: !Ref KeyName
      Tags:
      - Key: Name 
-       Value: myEc2
+       Value: !Ref EC2Name
   InstanceSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
@@ -28,4 +29,4 @@ Resources:
 Outputs:
   PublicIp:
     Description: Server public IP
-    Value: !GetAtt EC2Instance.PublicIp
+    Value: !GetAtt Ec2Instance.PublicIp
