@@ -23,3 +23,12 @@ terraform {
   region = "us-east-1"
   }
 } 
+#integrating AWS secrets manager with terraform.
+data "aws_secretsmanager_secret_version" "my_secret" {
+ secret_id = "my_secret_name"
+  }
+
+resource "aws_db_instance" "my_database" {
+ #other configuration...
+ password = data.aws_secretsmanager_secret_version.my_secret.secret_string
+}
